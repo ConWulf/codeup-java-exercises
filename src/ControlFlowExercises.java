@@ -1,28 +1,23 @@
+import java.util.Scanner;
+
 public class ControlFlowExercises {
 
     public static void main(String[] args) {
-        int i = 1;
-       do {
-           if (i % 3 == 0 && i % 5 == 0) {
-               System.out.printf("FizzBuzz %d%n", i);
-           } else if (i % 3 == 0) {
-               System.out.printf("Fizz %d%n", i);
-           } else if (i % 5 == 0) {
-               System.out.printf("Buzz %d%n", i);
-           }
-           i +=1; //returns double
-       } while (i <= 100);
 
-        for (int j = 1; j <= 100; j++) {
-            if (j % 3 == 0 && j % 5 == 0) {
-                System.out.printf("FizzBuzz %d%n", j);
-            } else if (j % 3 == 0) {
-                System.out.printf("Fizz %d%n", j);
-            } else if (j % 5 == 0) {
-                System.out.printf("Buzz %d%n", j);
-            }
-
+        Scanner scanner = new Scanner(System.in);
+        do {
+        System.out.println("What is the max number you want?");
+        int userInteger = scanner.nextInt();
+        System.out.println("here is your table.");
+        System.out.print("number | squared | cubed \n------ | ------  | ------");
+        for (int i = 1; i <= userInteger; i++) {
+            double squared = Math.pow(i, 2);
+            double cubed = Math.pow(i, 3);
+            System.out.printf("%n%d     |%d     |%d", i, (int)squared, (int)cubed);
         }
+        System.out.println("\nwould you lake to continue[Y/N]?");
+        } while ((scanner.hasNextLine() && scanner.next().equalsIgnoreCase("y")) || (!scanner.hasNextLine() && scanner.next().equalsIgnoreCase("yes")));
+
 
     }
 

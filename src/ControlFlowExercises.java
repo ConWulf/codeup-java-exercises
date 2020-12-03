@@ -1,11 +1,11 @@
 public class ControlFlowExercises {
 
     public static void main(String[] args) {
-        long i = 100;
+        double i = 2;
        do {
-           System.out.printf("\"i\" is: %d%n", i);
-           i-=5;
-       } while (i >= -10);
+           System.out.printf("\"i\" is: %f%n", i);
+           i = Math.pow(i, 2); //returns double
+       } while (i <= 1000000);
 
 
     }

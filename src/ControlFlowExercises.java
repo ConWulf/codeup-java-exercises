@@ -16,7 +16,7 @@ public class ControlFlowExercises {
             System.out.printf("%n%d     |%d     |%d", i, (int)squared, (int)cubed);
         }
         System.out.println("\nwould you lake to continue[Y/N]?");
-        } while (scanner.next().equalsIgnoreCase("y") || (!scanner.hasNextLine() && scanner.next().equalsIgnoreCase("yes")));
+        } while (scanner.next().equalsIgnoreCase("y"));
 
 //        System.out.println("What is your number grade?");
 //        int userGrade = scanner.nextInt();

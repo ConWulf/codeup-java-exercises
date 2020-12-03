@@ -4,22 +4,22 @@ public class ConsoleExercises {
 
     public static void main (String[] args) {
 //        double PI = 3.14159;
-//        System.out.printf("The value of PI is %f", PI);
+//        System.out.printf("The value of PI is %.2f %n", PI);
 
         Scanner scanner = new Scanner(System.in);
         scanner.useDelimiter("\n");
 //        System.out.println("enter an integer:");
 //        int userInteger = scanner.nextInt();
 //        System.out.println(userInteger);
-
+//
 //        System.out.println("enter 3 words:");
 //        String str1 = scanner.next();
 //        String str2 = scanner.next();
 //        String str3 = scanner.next();
 //        System.out.printf("%s %n%s %n%s", str1, str2, str3);
-
-
-//        System.out.println("enter a sentence");
+//        scanner.nextLine();
+//
+//        System.out.println("\nenter a sentence");
 //        String userSentence = scanner.nextLine();
 //        System.out.println(userSentence);
 
@@ -35,18 +35,21 @@ public class ConsoleExercises {
 //System.out.printf("the area of the room is: %f %n", w*l);
 //System.out.printf("the perimeter of your room is %f%n", 2*l+2*w);
 //System.out.printf("the volume of your room is: %f %n", w*l*h);
-//System.out.printf("your width was %f, your length was %f and your height was %f", w, l, h);
+//System.out.printf("your width was %f, your length was %f and your height was %f%n", w, l, h);
 
-//        System.out.println("enter a length and width:");
-//        float width = scanner.nextFloat();
-//        float length = scanner.nextFloat();
-//        System.out.println("enter a height");
-//        float height = scanner.nextFloat();
-//
-//        System.out.printf("the area of the room is: %f %n", width*length);
-//        System.out.printf("the perimeter of your room is %f%n", 2*length+2*width);
-//        System.out.printf("the volume of your room is: %f %n", width*length*height);
-//        System.out.printf("your width was %f, your length was %f and your height was %f", width, length, height);
+        System.out.println("enter a length and width and height:");
+//        float width1 = Float.parseFloat(scanner.nextLine());
+//        float length1 = Float.parseFloat(scanner.nextLine());
+//        float height1 = Float.parseFloat(scanner.nextLine());
+        float width1 = scanner.nextFloat();
+        float length1 = scanner.nextFloat();
+        float height1 = scanner.nextFloat();
+
+
+        System.out.printf("the area of the room is: %f %n", width1*length1);
+        System.out.printf("the perimeter of your room is %f%n", 2*length1+2*width1);
+        System.out.printf("the volume of your room is: %f %n", width1*length1*height1);
+        System.out.printf("your width was %f, your length was %f and your height was %f", width1, length1, height1);
 
 
 //        float e = .1F;

@@ -8,14 +8,14 @@ public class MethodsExercises {
 //        System.out.println(multiply(500L, 100L));
 //        System.out.println(divide(5, 2));
 //        System.out.println(remainder(9, 2));
-//        System.out.println(multiply2(500000L, 100000L));
-//        System.out.println(multiply2(500L, 100L));
+        System.out.println(multiply2(500000L, 100000L));
+        System.out.println(multiply2(500L, 100L));
 //        System.out.println(multiplyRecursive(5, 10));
 //        System.out.println(multiplyRecursive(500000L, 1000L));
         Scanner sc = new Scanner(System.in);
 //        do {
 //        int userInt =  getInteger(1,20);
-//        System.out.println(factorial(userInt));
+//        System.out.println(loopFactorial(userInt));
 //            System.out.println("would you like to enter another number?");
 //            String choice = sc.nextLine();
 //            if (!choice.equalsIgnoreCase("y")) break;
@@ -46,46 +46,37 @@ public class MethodsExercises {
         return x / y;
     }
 
-    public static int remainder (int x, int y) {
-        return x % y;
-    }
+    public static int remainder (int x, int y) { return x % y; }
 
     public static long multiply2 (long x, long y) {
         long multiply = 0L;
-        for (long i = 0L; i < y; i++) {
-           multiply += x;
-        }
+        for (long i = 0L; i < y; i++) multiply += x;
         return multiply;
     }
 
     public static long multiplyRecursive(long x, long y) {
-        if (y == 1) {
-            return  x;
-        }
+        if (y == 1) return  x;
         return x + multiplyRecursive( x, y-1);
     }
 
     public static int getInteger(int min, int max) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("enter a number between 1 and 20: ");
+        if (!sc.hasNextLine())
+        System.out.printf("enter a number between %d and %d: ", min, max);
         int userInput = sc.nextInt();
-        if (userInput >= min && userInput <= max) {
-            return userInput;
-        }
+        if (userInput >= min && userInput <= max) return userInput;
         return getInteger(min, max);
     }
 
     public static long factorial(long userInt) {
-        if (userInt == 1) {
-            return  userInt;
-        }
+        if (userInt == 1) return  userInt;
+
         return userInt * factorial(userInt-1);
     }
-    public static  String loopFactorial(long userInt) {
+
+    public static String loopFactorial(long userInt) {
         int start = 1;
-        for (int i = 1; i < userInt; i++) {
-            start *= i;
-        }
+        for (int i = 1; i <= userInt; i++) start *= i;
         return userInt + "!" + " = " + start;
     }
 

@@ -12,13 +12,20 @@ public class MethodsExercises {
 //        System.out.println(multiply2(500L, 100L));
 //        System.out.println(multiplyRecursive(5, 10));
 //        System.out.println(multiplyRecursive(500000L, 1000L));
-//        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 //        do {
 //        int userInt =  getInteger(1,20);
 //        System.out.println(factorial(userInt));
 //            System.out.println("would you like to enter another number?");
 //            String choice = sc.nextLine();
 //            if (!choice.equalsIgnoreCase("y")) break;
+//        } while (true);
+
+//        do {
+//            System.out.println(diceRoll());
+//            System.out.println("would you like to roll again?");
+//            String answer = sc.nextLine();
+//            if (!answer.equalsIgnoreCase("y")) break;
 //        } while (true);
 
     }
@@ -82,8 +89,13 @@ public class MethodsExercises {
         return userInt + "!" + " = " + start;
     }
 
-    public static int diceRoll(int numOfSides) {
-
+    public static String diceRoll() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the number of sides of your dice.");
+        int sides = sc.nextInt();
+        double diceOne = Math.ceil(Math.random() * sides);
+        double diceTwo = Math.ceil(Math.random() * sides);
+        return "Your two rolls were " + (int) diceOne + " and " + (int) diceTwo;
     }
 
 

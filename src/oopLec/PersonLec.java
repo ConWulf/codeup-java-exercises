@@ -1,6 +1,6 @@
 package oopLec;
 
-public class Person {
+public class PersonLec {
 
 
 
@@ -32,14 +32,14 @@ public class Person {
 
         public static void main(String[] args) {
 
-                System.out.println(oopLec.Person.worldPopulation);
-                oopLec.Person.worldPopulation -= 1;
+                System.out.println(PersonLec.worldPopulation);
+                PersonLec.worldPopulation -= 1;
                 System.out.println(worldPopulation);
 
 
-                oopLec.Person theBestDrummerAlive = new oopLec.Person();
+                PersonLec theBestDrummerAlive = new PersonLec();
                 theBestDrummerAlive.name = "Neil Peart";
-                oopLec.Person.worldPopulation += 1; // accessing a static property
+                PersonLec.worldPopulation += 1; // accessing a static property
                 // this also works, but is usually not a good idea
                 System.out.println(theBestDrummerAlive.worldPopulation); // 7500000001
                 // DONT DO THIS, it will not compile

@@ -1,33 +1,32 @@
 package oopLec;
 
-import java.util.Locale;
 import java.text.DecimalFormat;
+import java.util.Locale;
 public class DishTools {
-    static DecimalFormat df = new DecimalFormat(".##");
+    private static final DecimalFormat df = new DecimalFormat(".##");
     private static final int Avg_Cost_Of_Dish = 1300;
 
     public static void shoutDishName(Dish dish) {
-        System.out.printf("%s\n==============\n", dish.nameOfDish.toUpperCase(Locale.ROOT));
+        System.out.printf("%s\n==============\n", dish.getNameOfDish().toUpperCase(Locale.ROOT));
     }
 
     public static void analyzeDishCost(Dish dish) {
-        if (dish.getCost() > Avg_Cost_Of_Dish) {
-            System.out.printf("%s is more expensive than average\n-----------------\n", dish.nameOfDish);
+        if (dish.getCostInDollars() > Avg_Cost_Of_Dish) {
+            System.out.printf("%s is more expensive than average\n-----------------\n", dish.getNameOfDish());
         }
-        else System.out.printf("%s is less expensive than average\n-----------------\n", dish.nameOfDish);
+        else System.out.printf("%s is less expensive than average\n-----------------\n", dish.getNameOfDish());
     }
 
     public static void flipRecommendation(Dish dish) {
-        if (dish.wouldRecommend) dish.wouldRecommend = false;
-        else dish.wouldRecommend = true;
+        dish.setWouldRecommend(!dish.isWouldRecommend());
     }
 
 
     public static void printSummary (Dish dish) {
-        if (dish.wouldRecommend && dish.nameOfDish.equalsIgnoreCase("homemade ramen")) System.out.println("Blasphemous!");
-        else if (!dish.wouldRecommend && dish.nameOfDish.equalsIgnoreCase("homemade ramen")) dish.wouldRecommend = true;
-        if (dish.getCost() != 0) System.out.printf("Cost: %s\nName: %s\nRecommended: %s\n",
-                df.format(dish.getCost()/100), dish.nameOfDish, dish.wouldRecommend);
+        if (dish.isWouldRecommend() && dish.getNameOfDish().equalsIgnoreCase("homemade ramen")) System.out.println("Blasphemous!");
+        else if (!dish.isWouldRecommend() && dish.getNameOfDish().equalsIgnoreCase("homemade ramen")) dish.setWouldRecommend(true);
+        if (dish.getCostInDollars() != 0) System.out.printf("Cost: %s\nName: %s\nRecommended: %s\n",
+                df.format(dish.getCostInDollars()), dish.getNameOfDish(), dish.isWouldRecommend());
         else System.out.println("you did not enter a correct price.\n");
     }
 

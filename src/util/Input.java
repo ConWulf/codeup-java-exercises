@@ -10,35 +10,40 @@ public class Input {
     public Input(Scanner sc) {
         this.scanner = sc;
     }
+    public Input() { this.scanner = new Scanner(System.in); } //may be more beneficial to others using code.
 
     public String getString() {
-        System.out.println("would you like to enter a another radius?");
         return this.scanner.next();
     }
 
     public String getString(String prompt) {
-        System.out.printf("%s", prompt);
-        this.scanner.nextLine();
-        System.out.println("would you like to enter a number?");
-        return this.scanner.nextLine();
+        System.out.println( prompt);
+        return getString();
     }
 
     public boolean yesNo() {
-        String userAnswer = getString();
-        return !userAnswer.equalsIgnoreCase("yes")
-                && !userAnswer.equalsIgnoreCase("y");
+        return yesNo("would you like to enter a another radius?");
     }
 
+    public boolean yesNo(String prompt) {
+        System.out.println(prompt);
+        String userAnswer = getString();
+        return userAnswer.equalsIgnoreCase("yes")
+                || userAnswer.equalsIgnoreCase("y");
+    }
+
+
+
     public int getInt(int min, int max) {
-        System.out.printf("Enter an integer between %d and %d\n", min, max);
-        int userInt = getInt();
-        return (userInt > min && userInt < max) ? userInt : getInt(min, max);
+        return getInt(min, max, "Enter an integer between "+min+" and "+max);
+//        System.out.printf("Enter an integer between %d and %d\n", min, max);
+//        int userInt = getInt();
+//        return (userInt > min && userInt < max) ? userInt : getInt(min, max);
     }
 
     public int getInt(int min, int max, String string) {
         System.out.printf("%s\n", string);
-        this.scanner.nextLine();
-        System.out.printf("Enter an integer between %d and %d\n", min, max);
+//        this.scanner.nextLine();
         int userInt = getInt();
         return (userInt > min && userInt < max) ? userInt : getInt(min, max);
     }
@@ -49,14 +54,14 @@ public class Input {
 
 
     public double getDouble(double min, double max) {
-        System.out.printf("Enter a radius between %.2f and %.2f\n", min, max);
-        double userDouble = getDouble();
-        return (userDouble > min && userDouble < max) ? Float.parseFloat(df.format(userDouble)) : getDouble(min, max);
+        return getDouble(min, max, "Enter a radius between "+min+" and "+max);
+//        System.out.printf("Enter a radius between %.1f and %.1f\n", min, max);
+//        double userDouble = getDouble();
+//        return (userDouble > min && userDouble < max) ? Float.parseFloat(df.format(userDouble)) : getDouble(min, max);
     }
 
     public double getDouble(double min, double max, String prompt) {
         System.out.printf("%s\n", prompt);
-        System.out.printf("Enter a decimal between %f and %f\n", min, max);
         double userDouble = getDouble();
         return (userDouble > min && userDouble < max) ? userDouble : getDouble(min, max);
     }

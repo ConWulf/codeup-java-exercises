@@ -4,8 +4,9 @@ public class Circle {
 
     private double radius;
     private static int numOfCircles;
-    public Circle(double radius) {
+    public Circle(double radius, int numOfCircles) {
         this.radius = radius;
+        Circle.numOfCircles = numOfCircles;
     }
 
     public double getArea() {

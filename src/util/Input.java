@@ -13,21 +13,20 @@ public class Input {
     public Input() { this.scanner = new Scanner(System.in); } //may be more beneficial to others using code.
 
     public String getString() {
-        return this.scanner.next();
+        return getString("What would you like to do?\n");
     }
 
     public String getString(String prompt) {
-        System.out.println( prompt);
-        return getString();
+        return prompt;
     }
 
     public boolean yesNo() {
-        return yesNo("would you like to enter a another radius?");
+        return yesNo("\nwould you like to make another choice?\n");
     }
 
     public boolean yesNo(String prompt) {
         System.out.println(prompt);
-        String userAnswer = getString();
+        String userAnswer = this.scanner.next().trim();
         return userAnswer.equalsIgnoreCase("yes")
                 || userAnswer.equalsIgnoreCase("y");
     }
@@ -35,17 +34,13 @@ public class Input {
 
 
     public int getInt(int min, int max) {
-        return getInt(min, max, "Enter an integer between "+min+" and "+max);
-//        System.out.printf("Enter an integer between %d and %d\n", min, max);
-//        int userInt = getInt();
-//        return (userInt > min && userInt < max) ? userInt : getInt(min, max);
+        return getInt(min, max, "Enter your choice: ");
     }
 
-    public int getInt(int min, int max, String string) {
-        System.out.printf("%s\n", string);
-//        this.scanner.nextLine();
+    public int getInt(int min, int max, String prompt) {
+        System.out.print(prompt);
         int userInt = getInt();
-        return (userInt > min && userInt < max) ? userInt : getInt(min, max);
+        return (userInt >= min && userInt <= max) ? userInt : getInt(min, max);
     }
 
     public int getInt() {
@@ -55,9 +50,6 @@ public class Input {
 
     public double getDouble(double min, double max) {
         return getDouble(min, max, "Enter a radius between "+min+" and "+max);
-//        System.out.printf("Enter a radius between %.1f and %.1f\n", min, max);
-//        double userDouble = getDouble();
-//        return (userDouble > min && userDouble < max) ? Float.parseFloat(df.format(userDouble)) : getDouble(min, max);
     }
 
     public double getDouble(double min, double max, String prompt) {

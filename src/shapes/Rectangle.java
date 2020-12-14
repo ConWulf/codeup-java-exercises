@@ -3,22 +3,21 @@ package shapes;
  class Rectangle  {
     protected int length;
     protected int width;
-     protected int side;
 
-     public Rectangle(int length, int width) {
-         this.length = length;
-         this.width = width;
+
+     public Rectangle(int l, int w) {
+         this.length = l;
+         this.width = w;
      }
 
-     public Rectangle(int side) {
-         this.side = side;
-     }
 
      public int getArea() {
+         System.out.println("rectangle");
          return this.length * this.width;
      }
 
      public int getPerimeter() {
+         System.out.println("rectangle");
          return (2*this.length) + (2*this.width);
      }
  }

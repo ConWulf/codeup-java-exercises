@@ -1,6 +1,4 @@
-package oopLec;
-
-import java.util.Scanner;
+package inheritenceLec.polyLec.autoShop;
 
 public class ControlCar {
 

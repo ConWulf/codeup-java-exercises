@@ -1,5 +1,7 @@
 package oopLec;
 
+import inheritenceLec.polyLec.autoShop.Car;
+
 import java.util.Scanner;
 //why did I make this a separate class?
 public class Start {

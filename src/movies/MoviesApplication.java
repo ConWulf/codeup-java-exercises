@@ -13,8 +13,6 @@ public class MoviesApplication {
         List<Movie> movieList = new ArrayList<>(Arrays.asList(MoviesArray.findAll()));
         selectMovie(input, sc, movieList);
 
-//        addMovie(sc,movieList);
-
     }
 
     public static void selectMovie(Input input, Scanner sc, List<Movie> movie) {
@@ -76,7 +74,6 @@ public static void addMovie(Scanner sc, List<Movie> movies) {
     if (genre.equals("")) movies.add(new Movie(name));
     else movies.add(new Movie(name, genre));
     System.out.printf("You added %s", name);
-//    return movies;
 }
 
 }

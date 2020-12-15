@@ -1,5 +1,5 @@
-import oopLec.Car;
-import oopLec.ControlCar;
+import inheritenceLec.polyLec.autoShop.Car;
+import inheritenceLec.polyLec.autoShop.ControlCar;
 import oopLec.Start;
 
 import java.util.Scanner;

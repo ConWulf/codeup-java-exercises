@@ -1,4 +1,4 @@
-package oopLec;
+package inheritenceLec.polyLec.autoShop;
 
 public class Car {
     private boolean carOn;// car could be on or off

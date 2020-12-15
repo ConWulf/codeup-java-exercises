@@ -1,6 +1,6 @@
 package shapes;
 
-public class Circle {
+ class Circle {
 
     private double radius;
     private static int numOfCircles;

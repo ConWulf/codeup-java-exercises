@@ -1,8 +1,7 @@
 package shapes;
 
 import util.Input;
-
-public class CircleCreate {
+ class CircleCreate {
 
 
     public static String create (Input input, int numOfCircles) {

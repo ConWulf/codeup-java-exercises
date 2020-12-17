@@ -14,6 +14,8 @@ public class CollectionsLec {
             System.out.println(num);
         }
 
+
+
         HashMap<Character, String> answers = new HashMap<>();
 
         answers.putIfAbsent('A', "Sally");

@@ -1,17 +1,17 @@
 package util;
 
-import java.text.DecimalFormat;
+
 import java.util.*;
 
 public class Input {
 
     private final Scanner scanner;
-    private final DecimalFormat df = new DecimalFormat(".##");
     public Input(Scanner sc) {
         this.scanner = sc;
     }
     public Input() { this.scanner = new Scanner(System.in); } //may be more beneficial to others using code.
-    private final HashMap<String, Integer> items = new HashMap<>();
+    private final StringBuilder items = new StringBuilder();
+    HashMap<String, String> itemMap = new HashMap<>();
 
     public String getString() {
         return getString("Would you like to create a grocery list?");
@@ -60,45 +60,24 @@ public class Input {
        return this.scanner.nextInt();
     }
 
-    public HashMap<String, String> itemToCategory(ArrayList<String> items) {
-        HashMap<String, String> itemMap = new HashMap<>();
-        for (String item : items) {
-            switch (item) {
-                case "milk", "eggs":
-                    itemMap.putIfAbsent(item, "dairy");
-                    break;
-                case "sliced turkey", "sliced ham":
-                    itemMap.putIfAbsent(item, "meat");
-                    break;
-                case "red onion", "bell pepper":
-                    itemMap.putIfAbsent(item, "produce");
-                    break;
-                case "frozen vegetable combo":
-                    itemMap.putIfAbsent(item, "frozen");
-                    break;
-                case "french bread", "baguette":
-                    itemMap.putIfAbsent(item, "bakery");
-                    break;
-            }
-        }
-        return itemMap;
-    }
 
-public HashMap<String, Integer> getList(String prompt, HashMap<String, String> item) {
-    System.out.println(prompt);
+public String getList( HashMap<Integer, String> categories, ArrayList<String> categoriesArr) {
+    String selectedCat = selectCat(categories, categoriesArr);
+    System.out.println("enter a product");
+    this.scanner.nextLine();
     String itemChoice = this.scanner.nextLine();
-    if (!item.containsKey(itemChoice)) {return getList(prompt, item);}
-    else {
-    int amount = this.getInt(30);
-    items.putIfAbsent(itemChoice, amount);
+        int amount = this.getInt(30);
+        items.append(itemChoice).append(", qty: ").append(amount).append("\n");
+        itemMap.putIfAbsent(itemChoice, selectedCat);
+    if (this.yesNo()) {
+        return getList(categories, categoriesArr);
+    } else {
+        String[] sorted = items.toString().split("\n");
+        Arrays.sort(sorted);
+        System.out.println(itemMap);
+        return String.join("\n", sorted);
     }
-    if (this.yesNo()) return getList(prompt, item);
-    else return items;
 }
-
-    public HashMap<String, Integer> getList(HashMap<String, String> item) {
-        return getList("enter a product", item);
-    }
 
     public StringBuilder selectCat(ArrayList<String> categories) {
         int num = 0;
@@ -114,7 +93,10 @@ public HashMap<String, Integer> getList(String prompt, HashMap<String, String> i
         System.out.println(prompt);
         System.out.println(selectCat(categoriesArr));
         int choice = this.scanner.nextInt();
-        if (categories.containsKey(choice)) return categories.get(choice);
+        if (categories.containsKey(choice)) {
+            System.out.println(categories.get(choice));
+            return categories.get(choice);
+        }
         return "no category found";
     }
 
@@ -131,8 +113,6 @@ public HashMap<String, Integer> getList(String prompt, HashMap<String, String> i
         }
         return catMap;
     }
-
-
 
     public double getDouble(double min, double max) {
         return getDouble(min, max, "Enter a radius between "+min+" and "+max);

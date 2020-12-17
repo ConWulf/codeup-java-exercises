@@ -8,21 +8,29 @@ public class GradesApplication {
 
         Scanner sc = new Scanner(System.in);
         HashMap<String, Student> github = new HashMap<>();
+
         Student kamala = new Student("kamala");
         kamala.addGrade(new ArrayList<>(Arrays.asList(88,  95, 99)));
+
         Student riri = new Student("riri");
         riri.addGrade(new ArrayList<>(Arrays.asList(100,  105, 100)));
+
         Student viv = new Student("viv vision");
         viv.addGrade(new ArrayList<>(Arrays.asList(Student.convertToDecimal(1100011),
                 Student.convertToDecimal(1100100), Student.convertToDecimal(1100010))));
+
         Student amadeus = new Student("amadeus cho");
         amadeus.addGrade(new ArrayList<>(Arrays.asList(100,  100, 100)));
+
         github.putIfAbsent("kamala*", kamala);
         github.putIfAbsent("IronHeart", riri);
         github.putIfAbsent("vivision", viv);
         github.putIfAbsent("Brawn", amadeus);
+
         Set<String> usernames = github.keySet();
+
         boolean keepGoing = true;
+
         do {
         System.out.println("Welcome!\n\nhere are the GitHub usernames of our students\n");
         for (String username: usernames) {

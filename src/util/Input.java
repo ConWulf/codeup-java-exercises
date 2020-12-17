@@ -13,7 +13,7 @@ public class Input {
     public Input() { this.scanner = new Scanner(System.in); } //may be more beneficial to others using code.
 
     public String getString() {
-        return getString("What would you like to do?\n");
+        return getString("Would you like to create a grocery list?");
     }
 
     public String getString(String prompt) {

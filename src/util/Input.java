@@ -15,35 +15,108 @@ public class Input {
     private final StringBuilder items = new StringBuilder();
     private final Map<String, ArrayList<String>> itemMap = new HashMap<>();
     private ArrayList<String> selections = new ArrayList<>();
-    public String getString() {
-        return getString("Would you like to create a grocery list?");
-    }
+//    public String getString() {
+//        return getString("Would you like to create a grocery list?");
+//    }
 
     public String getString(String prompt) {
         return prompt;
     }
 
+    public String getString() {
+        return this.scanner.nextLine();
+    }
+
     public boolean yesNo() {
-        return yesNo("\ntype e to enter a new item.\n");
+        return yesNo("\nwould you like to make another circle?\n");
     }
 
     public boolean yesNo(String prompt) {
         System.out.println(prompt);
-        String userAnswer = this.scanner.next().trim();
-        return userAnswer.equalsIgnoreCase("e");
+        String userAnswer = this.scanner.nextLine().trim();
+        return userAnswer.equalsIgnoreCase("y");
     }
 
     public int getInt(int min, int max) {
-        return getInt(min, max, "Enter your choice: ");
+        return getInt(min, max, "Enter a number in base 16: ");
     }
 
     public int getInt(int min, int max, String prompt) {
         System.out.print(prompt);
-        int userInt = getInt();
+        try {
+        int userInt = Integer.valueOf(getInt(), 12);
+        System.out.println("your number in Decimal is: "+userInt);
         return (userInt >= min && userInt <= max) ? userInt : getInt(min, max);
+        } catch (NumberFormatException e) {
+//            e.printStackTrace(System.out);
+            System.out.println("Must be an integer");
+            return getInt(min, max, prompt);
+        }
     }
 
-    public int getInt() {return Integer.parseInt(this.scanner.nextLine());}
+    public String getInt() {return getString();}
+
+    public double getDouble(double min, double max) {
+        return getDouble(min, max, "Enter a radius between "+min+" and "+max);
+    }
+
+    public double getDouble(double min, double max, String prompt) {
+        System.out.printf("%s\n", prompt);
+        try {
+            double userDouble = Double.valueOf(getDouble());
+            return (userDouble > min && userDouble < max) ? userDouble : getDouble(min, max);
+        } catch (NumberFormatException e) {
+//            e.printStackTrace(System.out);
+            System.out.println("please enter a double.");
+            return getDouble(min, max, prompt);
+        }
+    }
+
+    public String getDouble() {
+        return getString();
+    }
+
+
+public int getBinary (String binaryNum) {
+    try {
+        int num = Integer.valueOf(binaryNum, 2);
+        System.out.println("your number in decimal is: "+num);
+        return num;
+    } catch (NumberFormatException e) {
+        System.out.println("enter a valid number");
+        return getBinary();
+    }
+
+}
+
+    public int getHex (String hexNum) {
+        try {
+            int num = Integer.valueOf(hexNum, 16);
+            System.out.println("your number in decimal is: "+num);
+            return num;
+        } catch (NumberFormatException e) {
+            System.out.println("enter a valid number");
+            return getHex();
+        }
+
+    }
+
+
+    public int getHex() {
+        System.out.println("Enter a hexadecimal number: ");
+       return getHex(getString());
+    }
+
+    public int getBinary() {
+        System.out.println("Enter a binary number: ");
+       return getBinary(getString());
+    }
+
+
+
+
+
+
 
     //grocery methods
 
@@ -107,20 +180,6 @@ public String getList( Map<Integer, String> categories, List<String> categoriesA
             catMap.putIfAbsent(num, category);
         }
         return catMap;
-    }
-
-    public double getDouble(double min, double max) {
-        return getDouble(min, max, "Enter a radius between "+min+" and "+max);
-    }
-
-    public double getDouble(double min, double max, String prompt) {
-        System.out.printf("%s\n", prompt);
-        double userDouble = getDouble();
-        return (userDouble > min && userDouble < max) ? userDouble : getDouble(min, max);
-    }
-
-    public double getDouble() {
-       return Double.parseDouble(this.scanner.nextLine());
     }
 
     public Scanner getScanner() {

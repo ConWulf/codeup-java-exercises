@@ -44,7 +44,7 @@ public class Input {
     public int getInt(int min, int max, String prompt) {
         System.out.print(prompt);
         try {
-        int userInt = Integer.valueOf(getInt(), 16);
+        int userInt = Integer.valueOf(getInt(), 12);
         System.out.println("your number in Decimal is: "+userInt);
         return (userInt >= min && userInt <= max) ? userInt : getInt(min, max);
         } catch (NumberFormatException e) {
@@ -70,7 +70,6 @@ public class Input {
             System.out.println("please enter a double.");
             return getDouble(min, max, prompt);
         }
-        //        if (userDouble > min && userDouble < max) throw new Error("not in range!");
     }
 
     public String getDouble() {

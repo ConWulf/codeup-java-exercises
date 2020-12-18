@@ -1,0 +1,3 @@
+Initialized file reader
+Retrieved first line of all data file lines.
+Retrieved firts line of all data file lines.day18.txt

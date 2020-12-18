@@ -43,7 +43,7 @@ public class Input {
         return (userInt >= min && userInt <= max) ? userInt : getInt(min, max);
     }
 
-    public int getInt() {return this.scanner.nextInt();}
+    public int getInt() {return Integer.parseInt(this.scanner.nextLine());}
 
     //grocery methods
 
@@ -120,7 +120,7 @@ public String getList( Map<Integer, String> categories, List<String> categoriesA
     }
 
     public double getDouble() {
-       return this.scanner.nextDouble();
+       return Double.parseDouble(this.scanner.nextLine());
     }
 
     public Scanner getScanner() {
